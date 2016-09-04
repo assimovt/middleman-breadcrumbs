@@ -24,7 +24,7 @@ describe Breadcrumbs do
 
     describe 'top-level page' do
       it 'returns a link to the page' do
-        @helper.breadcrumbs(@page).must_equal link_to(@page.data.title, "/#{@page.path}")
+        @helper.breadcrumbs(@page).must_equal link_to(@page.data.title, @page.url)
       end
     end
 
@@ -110,7 +110,7 @@ describe Breadcrumbs do
 
   def breadcrumb_links
     [@grandparent, @parent, @page].collect do |level|
-      link_to level.data.title, "/#{level.path}"
+      link_to level.data.title, level.url
     end
   end
 
